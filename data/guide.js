@@ -1,0 +1,256 @@
+window.GUIDE = {
+  specs: {
+    balance: { name: 'Balance', icon: 'spell_nature_starfall', color: '#7fb4e0' },
+    feral: { name: 'Feral', icon: 'ability_druid_catform', color: '#ff9d3c' },
+    bear: { name: 'Feral tank', icon: 'ability_racial_bearform', color: '#c9a36a' },
+    resto: { name: 'Restoration', icon: 'spell_nature_healingtouch', color: '#8fd16f' },
+  },
+
+  pve: [
+    {
+      id: 'cat', spec: 'feral', sim: 'cat', setup: 'cat', name: 'Cat', sub: 'Shred from behind', difficulty: 'Medium',
+      when: 'The top druid damage in the sim. You need to stand behind the boss for Shred and keep two bleeds rolling.',
+      loop: [
+        ['Faerie Fire', 'Keep it on the boss before anything else. It is a raid debuff, not personal damage.'],
+        ['Shred', 'Your combo point builder. Spend Clearcasting on it too.'],
+        ['Rip', 'Refresh at 4 combo points, or 5 when you can afford the next one. Never let it fall off.'],
+        ['Rake', 'Refresh when it expires, unless the fight is about to end.'],
+        ['Shifting Power', 'Press it whenever you sit at 53 Energy or less. It is your biggest talent by far.'],
+        ['Ferocious Bite', 'Only while Rip still has 3 seconds or more left, at 4 combo points or more and about 75 Energy.'],
+      ],
+      opener: [
+        'Prowl, equip Manual Crowd Pummeler, Dash in.',
+        'Ravage from stealth.',
+        'Activate the Pummeler once you are in melee, then swap back to your main weapon when its haste ends.',
+        'Rake, Shred to 4 points, Rip.',
+        'Mighty Rage Potion in Cat Form. Thistle Tea when Energy is low.',
+      ],
+      tips: [
+        'Shifting Power costs mana. Demonic Rune and Major Mana Potion are there to pay for it, and Innervate yourself when low.',
+        'Cannot get behind the boss? Claw replaces Shred and Bite becomes your only spender if bleeds cannot land.',
+        'The sim assumes another player keeps a bleed up, which feeds Rend and Tear even when yours drop.',
+        'One point less in Shredding Attacks costs more than dropping the talent: at 2/3 the rotation still Shreds, but too expensively.',
+      ],
+      weights: { reference: 'Strength', source: 'cat' },
+      caps: ['8% hit', '6.5% expertise'],
+    },
+    {
+      id: 'cat-hybrid', spec: 'feral', sim: 'cat-hybrid', setup: 'cat', name: 'Hybrid, in Cat', sub: 'one spec, both forms', difficulty: 'Medium',
+      when: 'One talent build that also tanks. You give up Shredding Attacks, so Claw is your builder, and you lose about 60 DPS to the Cat build.',
+      loop: [
+        ['Faerie Fire', 'Keep it on the boss.'],
+        ['Claw', 'Your builder: without Shredding Attacks, Shred costs too much.'],
+        ['Rip', 'Refresh at 4 combo points.'],
+        ['Rake', 'Refresh when it expires.'],
+        ['Shifting Power', 'At 53 Energy or less.'],
+        ['Ferocious Bite', 'Rarely: only with Rip safe and Energy pooled.'],
+      ],
+      opener: ['Prowl and Dash in.', 'Ravage from stealth.', 'Activate Manual Crowd Pummeler in melee.', 'Rake, Claw to 4 points, Rip.'],
+      tips: [
+        'Same gear as the Cat build in this sim. Swap to tank pieces when you are the one being hit.',
+        'Lacerate and Primal Bite are worth nothing in Cat Form: they are in the build for your Bear.',
+      ],
+      weights: { reference: 'Strength', source: 'hybrid' },
+      caps: ['8% hit', '6.5% expertise'],
+    },
+    {
+      id: 'bear', spec: 'bear', sim: 'bear', setup: 'bear', name: 'Bear', sub: 'main tank', difficulty: 'Easy',
+      when: 'The tank build. Lacerate is the whole threat engine: it alone is worth about 1,170 threat per second.',
+      loop: [
+        ['Faerie Fire', 'Apply it if nobody else does. Demoralizing Roar the same way.'],
+        ['Primal Bite', 'On cooldown, before any filler.'],
+        ['Lacerate', 'Stack it to 5 and keep it refreshed.'],
+        ['Maul', 'Queue it with spare Rage, but keep enough for the next Primal Bite.'],
+        ['Swipe', 'Takes Lacerate\'s place only on targets that cannot bleed.'],
+      ],
+      opener: [
+        'Feral Charge into melee.',
+        'Activate Manual Crowd Pummeler, then swap back just after a swing.',
+        'Enrage if you are below the Rage cost of Lacerate.',
+        'Primal Bite, then Lacerate to 5 stacks.',
+        'Greater Stoneshield Potion on cooldown.',
+      ],
+      tips: [
+        'Barkskin and Frenzied Regeneration are your buttons when health drops. Major Healthstone at the same moment.',
+        'Thick Hide and Feral Swiftness each remove about 53 damage taken per second. Do not drop them for threat.',
+        'Without consumables the chance to die in a 3 minute fight jumps from about 1% to nearly 50% in this sim.',
+        'The boss here has a 6,000 base hit before armor, and the healing model gives you 2,200 healing per second.',
+      ],
+      weights: { reference: 'Stamina', source: 'bear' },
+      caps: ['8% hit', '6.5% expertise', '5.6% reduced crit taken'],
+    },
+    {
+      id: 'bear-hybrid', spec: 'bear', sim: 'bear-hybrid', setup: 'bear', name: 'Hybrid, in Bear', sub: 'one spec, both forms', difficulty: 'Easy',
+      when: 'The same hybrid talents, tanking. About 50 threat per second behind the Bear build, same damage taken.',
+      loop: [
+        ['Faerie Fire', 'Apply it if nobody else does.'],
+        ['Primal Bite', 'On cooldown.'],
+        ['Lacerate', 'Stack to 5, keep it up.'],
+        ['Maul', 'With spare Rage.'],
+      ],
+      opener: ['Feral Charge in.', 'Activate Manual Crowd Pummeler.', 'Primal Bite, then Lacerate to 5 stacks.'],
+      tips: ['Shifting Power and Predatory Discipline do nothing in Bear Form: they are in the build for your Cat.'],
+      weights: { reference: 'Stamina', source: 'hybrid' },
+      caps: ['8% hit', '6.5% expertise', '5.6% reduced crit taken'],
+    },
+    {
+      id: 'balance', spec: 'balance', sim: 'balance', setup: 'balance', name: 'Moonkin', sub: 'Eclipse caster', difficulty: 'Easy',
+      when: 'Ranged damage and a crit aura for the raid. Two dots, then Wrath feeds Starfire through Eclipse.',
+      loop: [
+        ['Moonfire', 'Keep it on the boss. Stop refreshing in the last 8 seconds.'],
+        ['Insect Swarm', 'Same rule as Moonfire.'],
+        ['Wrath', 'Each Wrath that lands gives 2 Eclipse charges, up to 4.'],
+        ['Starfire', 'Cast it while you hold an Eclipse charge: each charge makes one Starfire 0.5 seconds faster.'],
+        ['Wrath', 'No charge left? Back to Wrath.'],
+      ],
+      opener: [
+        'Pre-cast Wrath so it lands just after the pull, then a second Wrath.',
+        'Moonfire and Insect Swarm.',
+        'Major Spellblasting Potion if your mana will last, otherwise keep the potion slot for mana.',
+        'Starfire on your Eclipse charges.',
+      ],
+      tips: [
+        'Innervate yourself under 40% mana with more than 30 seconds left.',
+        'About to lose a dot during a cast? A Wrath first refreshes Eclipse before you recast the dot.',
+        'Three or more targets: dot up to four of them. Five or more: Hurricane.',
+        'Starfire is over half your damage. Starlight Wrath and Eclipse are the talents that make it fast.',
+      ],
+      weights: { reference: 'Spell damage', source: 'balance' },
+      caps: ['Hit first: it is your best stat per point'],
+    },
+    {
+      id: 'resto', spec: 'resto', sim: null, setup: null, name: 'Restoration', sub: 'healer, not simulated', difficulty: 'Medium',
+      talents: '35002001--0553025153113051', unsimmed: true,
+      when: 'The simulator does not model healing, so nothing on this card is measured. The talents below are a starting point built from the talent text, not a tested best build.',
+      loop: [
+        ['Rejuvenation', 'Your bread and butter. When it runs its full duration, Bloom heals for your Spirit.'],
+        ['Regrowth', 'On targets taking steady damage. Improved Regrowth gives it 50% more crit chance.'],
+        ['Swiftmend', 'Instant heal on a target that has Rejuvenation or Regrowth.'],
+        ['Wild Growth', 'When the whole party is hurt.'],
+        ['Healing Touch', 'The big slow heal. Nature\'s Swiftness makes one instant.'],
+      ],
+      opener: ['Rejuvenation on the tank before the pull.', 'Regrowth as the first hits land.', 'Keep Nature\'s Swiftness for an emergency Healing Touch.'],
+      tips: [
+        'Genesis in Balance adds 10% to every heal over time, which is why this build dips into that tree.',
+        'Living Spirit gives 15% Spirit, and Bloom turns Spirit straight into healing.',
+        'Reflection keeps half of your mana regeneration going while you cast.',
+      ],
+      weights: null,
+      caps: [],
+    },
+  ],
+
+  pvpNotice: 'Nobody has measured these. The PvP builds come from Skill Capped guides written during the level 30 beta, and their authors say they are untested at 60. Treat them as a starting point.',
+
+  pvp: [
+    {
+      id: 'pvp-feral', spec: 'feral', name: 'Feral, battlegrounds', sub: '7 / 31 / 13', talents: '050002-25202002123012125001-05503',
+      source: ['Skill Capped: Feral PvP talents', 'https://www.skill-capped.com/wowarticles/forever/guides/feral-druid-pvp-guide/talents/'],
+      when: 'The all-round build for battlegrounds and duels: Shifting Power, Feral Charge and Leader of the Pack, with Naturalist and Natural Shapeshifter.',
+      play: [
+        ['Bear against melee', 'Armor and Bash. Shift back to Cat when they disengage.'],
+        ['Cat against casters', 'Open from Prowl, Feral Charge to interrupt.'],
+        ['Roam', 'Prowl to take nodes nobody is watching.'],
+        ['Shift to escape', 'In Classic, shapeshifting breaks roots and snares. No source confirms it for Forever yet: test it.'],
+      ],
+      tips: ['Feral Charge works in Cat Form in Forever.', 'Restoration druids are a bad matchup: they out-heal your bleeds.'],
+    },
+    {
+      id: 'pvp-feral-duel', spec: 'feral', name: 'Feral, duels', sub: '0 / 35 / 16', talents: '-53202032123112125-55500000001',
+      source: ['Skill Capped: Feral PvP talents', 'https://www.skill-capped.com/wowarticles/forever/guides/feral-druid-pvp-guide/talents/'],
+      when: 'Deeper Feral with Swiftmend for one-on-one fights, where a single instant heal decides the duel.',
+      play: [
+        ['Open from Prowl', 'Pounce or Ravage, then bleeds.'],
+        ['Kite in Bear', 'Soak the burst, Bash, shift out and heal.'],
+        ['Rejuvenation then Swiftmend', 'Your instant heal between forms.'],
+      ],
+      tips: ['Brutal Impact makes Bash a longer stun on a shorter cooldown.'],
+    },
+    {
+      id: 'pvp-fc', spec: 'feral', name: 'Flag carrier', sub: '7 / 23 / 21', talents: '050002-0523230211010012-555300010011',
+      source: ['Skill Capped: Restoration PvP talents', 'https://www.skill-capped.com/wowarticles/forever/guides/restoration-druid-pvp-guide/talents/'],
+      when: 'Warsong Gulch flag running. Bear armor, Feral Charge, Nature\'s Swiftness, Swiftmend and Bloom in one build.',
+      play: [
+        ['Travel and Cat to move', 'Feral Swiftness speeds you up, and now works indoors.'],
+        ['Bear when focused', 'Thick Hide and the dodge from Feral Swiftness keep you alive.'],
+        ['Shift out of roots', 'Classic behaviour, unconfirmed for Forever: test it before you rely on it.'],
+        ['Nature\'s Swiftness + Healing Touch', 'Your emergency button.'],
+      ],
+      tips: ['The 4-piece PvP set bonus is reported as 15% outdoor movement speed in forms.'],
+    },
+    {
+      id: 'pvp-resto', spec: 'resto', name: 'Restoration hybrid', sub: '19 / 11 / 21', talents: '5502120013-052021001-555300010011',
+      source: ['Skill Capped: Restoration PvP talents', 'https://www.skill-capped.com/wowarticles/forever/guides/restoration-druid-pvp-guide/talents/'],
+      when: 'Duels and world PvP: Insect Swarm and Feral Charge on top of Nature\'s Swiftness and Swiftmend.',
+      play: [
+        ['Dots and roots', 'Moonfire, Insect Swarm, Entangling Roots, then keep your distance.'],
+        ['Heals over time on yourself', 'They stack and can crit in Forever.'],
+        ['Feral Charge', 'Interrupt a caster, or close on a runner.'],
+      ],
+      tips: [
+        'Skill Capped also lists a 30/0/21 default it calls probably not the best for healing a battleground. Its talent string no longer fits the current trees, so it is not shown here.',
+      ],
+    },
+    {
+      id: 'pvp-balance', spec: 'balance', name: 'Balance', sub: 'no tested build', talents: null,
+      source: null,
+      when: 'No Forever-specific Balance PvP build was found that anyone had tested. The PvE Moonkin build is the only measured Balance build so far.',
+      play: [],
+      tips: ['Improved Starfire gives Starfire a 15% chance to stun for 3 seconds, and Nature\'s Reach adds 20% range: both are obvious PvP picks to test.'],
+    },
+  ],
+
+  pvpBasics: [
+    ['Battlegrounds', 'Warsong Gulch, Arathi Basin, Alterac Valley and the new Darkspear Islands (15 against 15, levels 30 to 60).'],
+    ['Honor', '14 ranks with weekly caps. Two gear sets: a blue one, then an epic upgrade that needs the blue piece and a rank.'],
+    ['Dual spec', 'From level 40 for 50 gold. You cannot swap in combat or inside a battleground.'],
+    ['Races', 'Tauren: War Stomp works in every form. Night Elf: Shadowmeld in combat and Elune\'s Light.'],
+    ['Profession', 'Engineering is expected to be the strongest, for the stun, the helmet and the glider.'],
+    ['Arenas', 'Not confirmed. One weak source says there is no rated PvP at launch.'],
+  ],
+
+  macros: [
+    ['Prowl from anywhere', '#showtooltip Prowl\n/cast [form:3] !Prowl; Cat Form'],
+    ['Feral Charge your focus', '#showtooltip Feral Charge\n/cast [@focus] Feral Charge'],
+    ['Bash your focus', '#showtooltip Bash\n/cast [form:1,@focus] Bash; Bear Form'],
+    ['Frenzied Regeneration', '#showtooltip Frenzied Regeneration\n/cast [form:1] Frenzied Regeneration; Bear Form'],
+    ['Mouseover Remove Curse', '#showtooltip Remove Curse\n/cast [@mouseover,help,nodead][] Remove Curse'],
+    ['Innervate a friend or yourself', '#showtooltip Innervate\n/cast [@mouseover,help,nodead][@player] Innervate'],
+    ['Leave form', '/cancelform'],
+  ],
+  macroSource: ['Skill Capped: Feral PvP macros', 'https://www.skill-capped.com/wowarticles/forever/guides/feral-druid-pvp-guide/macros/'],
+
+  statWeights: {
+    cat: [['Agility', 0.65], ['Strength', 0.59], ['Hit rating', 0.52], ['Crit rating', 0.51], ['Expertise rating', 0.49], ['Haste rating', 0.39], ['Attack Power', 0.24], ['Armor penetration', 0.07]],
+    bear: [['Expertise rating', 1.78], ['Stamina', 1.0], ['Defense rating', 0.88], ['Hit rating', 0.69], ['Strength', 0.49], ['Agility', 0.43], ['Crit rating', 0.36], ['Haste rating', 0.36], ['Attack Power', 0.22], ['Armor', 0.17], ['Dodge rating', 0.11]],
+    hybrid: [['Expertise rating', 1.18], ['Hit rating', 0.61], ['Stamina', 0.54], ['Strength', 0.54], ['Agility', 0.54], ['Defense rating', 0.47], ['Crit rating', 0.43], ['Haste rating', 0.37], ['Attack Power', 0.23]],
+    balance: [['Hit rating', 1.15], ['Spell damage', 1.0], ['Haste rating', 1.0], ['Crit rating', 0.72], ['Arcane damage', 0.62], ['Nature damage', 0.38], ['Intellect', 0.23], ['MP5', 0.08], ['Spirit', 0.02]],
+  },
+  statWeightsNote: 'Weights are the simulator\'s own published values for each spec, per point of the stat.',
+
+  glossary: [
+    ['Powershifting', 'Leaving and re-entering Cat Form for Energy. In Forever, Furor no longer pays for it: Shifting Power is the button that does.'],
+    ['Shifting Power', 'A Feral talent: turn mana into 40 Energy, instantly.'],
+    ['Lacerate', 'A Bear bleed that stacks to 5 and makes most of your threat.'],
+    ['Eclipse', 'Each Wrath speeds up your next two Starfires.'],
+    ['MCP', 'Manual Crowd Pummeler, a mace whose use effect gives a burst of attack speed.'],
+    ['Hit cap', '8% hit stops your melee attacks missing a raid boss.'],
+    ['TPS', 'Threat per second: how firmly the boss stays on the tank.'],
+    ['DTPS', 'Damage taken per second, after armor and avoidance.'],
+  ],
+
+  addons: [
+    ['Catnip', 'A Feral HUD: combo points and a Shifting Power timer.', 'https://github.com/DurtsGaming/Catnip'],
+    ['ForeverQuickDruid', 'Shows Cat and Bear stats on item tooltips.', 'https://github.com/philippe-alfaiate/ForeverQuickDruid'],
+    ['WoWSims Forever', 'Run your own character through the simulator.', 'https://www.wowsims.com/forever/'],
+  ],
+
+  sources: [
+    ['WoWSims Forever', 'https://github.com/wowsims/forever'],
+    ['Wowhead Forever talent calculator', 'https://www.wowhead.com/forever/talent-calc/druid'],
+    ['Skill Capped Feral PvP guide', 'https://www.skill-capped.com/wowarticles/forever/guides/feral-druid-pvp-guide/'],
+    ['Skill Capped Restoration PvP guide', 'https://www.skill-capped.com/wowarticles/forever/guides/restoration-druid-pvp-guide/talents/'],
+    ['Blizzard: PvP in WoW Forever', 'https://news.blizzard.com/en-us/article/24303316/pvp'],
+    ['Warcraft Wiki: WoW Forever', 'https://warcraft.wiki.gg/wiki/WoW_Forever'],
+  ],
+};

@@ -1,0 +1,116 @@
+#!/usr/bin/env python3
+"""Write data/setups.js: the gear, consumables and buffs of each sim setup, with names and icons from Wowhead.
+
+    python tools/build_setups.py --cli path/to/wowsimcli[.exe]
+"""
+import argparse
+import json
+import re
+import subprocess
+import sys
+import urllib.request
+from pathlib import Path
+
+ROOT = Path(__file__).resolve().parent.parent
+SETUPS = ROOT / 'tools' / 'setups'
+ITEM_CACHE = ROOT / 'tools' / 'item_names.json'
+SLOTS = ['Head', 'Neck', 'Shoulder', 'Back', 'Chest', 'Wrist', 'Hands', 'Waist', 'Legs', 'Feet', 'Finger', 'Finger',
+         'Trinket', 'Trinket', 'Main hand', 'Off hand', 'Idol']
+CONSUMABLE_FIELDS = [('flaskId', 'Flask'), ('foodId', 'Food'), ('mhImbueId', 'Weapon'), ('elixirIds', 'Elixir'),
+                     ('extraIds', 'Extra'), ('offensivePotId', 'Potion'), ('defensivePotId', 'Potion'),
+                     ('resourcePotId', 'Mana'), ('conjuredId', 'Rune / stone'), ('explosiveId', 'Explosive')]
+BUFF_GROUPS = [('raidBuffs', 'Raid'), ('partyBuffs', 'Party'), ('buffs', 'On you'), ('debuffs', 'On the boss')]
+SETUP_FILES = {'balance': 'balance.siml', 'cat': 'cat.siml', 'bear': 'bear.siml'}
+
+
+class Items:
+    def __init__(self):
+        self.cache = json.loads(ITEM_CACHE.read_text(encoding='utf-8')) if ITEM_CACHE.exists() else {}
+
+    def lookup(self, item_id):
+        key = str(item_id)
+        if key not in self.cache:
+            url = f'https://nether.wowhead.com/forever/tooltip/item/{item_id}'
+            request = urllib.request.Request(url, headers={'User-Agent': 'Mozilla/5.0 druid-guide'})
+            try:
+                tooltip = json.loads(urllib.request.urlopen(request, timeout=20).read().decode('utf-8'))
+                self.cache[key] = {'name': tooltip.get('name'), 'icon': tooltip.get('icon'),
+                                   'quality': tooltip.get('quality')}
+            except Exception:
+                self.cache[key] = {'name': f'Item {item_id}', 'icon': None, 'quality': None}
+        return {'id': item_id, **self.cache[key]}
+
+    def save(self):
+        ITEM_CACHE.write_text(json.dumps(self.cache, indent=1, sort_keys=True), encoding='utf-8')
+
+
+def parsed_setup(cli, path):
+    done = subprocess.run([cli, 'siml', 'parse', '-json', str(path)], capture_output=True, text=True, encoding='utf-8')
+    if done.returncode != 0:
+        sys.exit(f'{path}: {done.stdout}{done.stderr}')
+    return json.loads(done.stdout)
+
+
+def enchant_names_by_slot(setup_text):
+    gear = re.search(r'^gear:\n((?:  .*\n)+)', setup_text, flags=re.M)
+    names = {}
+    for line in (gear.group(1) if gear else '').splitlines():
+        row = re.match(r'\s+(\w+)\s+\S+.*?\+\s*(\w+)', line)
+        if row:
+            words = re.sub(r'_\d+$', '', row.group(2)).replace('enchant_', '').split('_')
+            names[row.group(1)] = ' '.join(words).capitalize()
+    return names
+
+
+def words_from_camel(name):
+    return re.sub(r'(?<!^)([A-Z])', r' \1', name).capitalize()
+
+
+def describe(cli, items, file_name):
+    path = SETUPS / file_name
+    setup = parsed_setup(cli, path)
+    player = setup['player']
+    enchants = enchant_names_by_slot(path.read_text(encoding='utf-8'))
+    slot_keys = ['head', 'neck', 'shoulder', 'back', 'chest', 'wrist', 'hands', 'waist', 'legs', 'feet', 'finger1',
+                 'finger2', 'trinket1', 'trinket2', 'main_hand', 'off_hand', 'ranged']
+
+    gear = []
+    for index, spec in enumerate(player.get('equipment', {}).get('items', [])):
+        if spec.get('id'):
+            gear.append({'slot': SLOTS[index], **items.lookup(spec['id']), 'enchant': enchants.get(slot_keys[index])})
+
+    consumables = []
+    for field, label in CONSUMABLE_FIELDS:
+        value = player.get('consumables', {}).get(field)
+        for item_id in (value if isinstance(value, list) else [value] if value else []):
+            consumables.append({'kind': label, **items.lookup(item_id)})
+
+    buffs = []
+    for field, label in BUFF_GROUPS:
+        source = player.get('buffs', {}) if field == 'buffs' else setup.get(field, {})
+        names = [words_from_camel(name) for name, on in source.items() if on]
+        if names:
+            buffs.append({'group': label, 'names': names})
+
+    swap = [items.lookup(spec['id']) for spec in player.get('itemSwap', {}).get('items', []) if spec.get('id')]
+    return {'race': words_from_camel(player.get('race', '').replace('Race', '')), 'gear': gear,
+            'consumables': consumables, 'buffs': buffs, 'swap': swap,
+            'professions': [player.get('profession1'), player.get('profession2')]}
+
+
+def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument('--cli', required=True)
+    args = parser.parse_args()
+    items = Items()
+    setups = {key: describe(args.cli, items, file_name) for key, file_name in SETUP_FILES.items()}
+    items.save()
+    out = ROOT / 'data' / 'setups.js'
+    payload = json.dumps(setups, separators=(',', ':'), ensure_ascii=False)
+    out.write_text('// Generated by tools/build_setups.py from tools/setups. Do not edit by hand.\n'
+                   f'window.SETUPS = {payload};\n', encoding='utf-8')
+    print(out, {key: (len(v['gear']), len(v['consumables'])) for key, v in setups.items()})
+
+
+if __name__ == '__main__':
+    main()

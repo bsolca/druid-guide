@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Forever Druid Guide</title>
+<link rel="icon" href="https://wow.zamimg.com/images/wow/icons/medium/classicon_druid.jpg">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="bar">
+  <div class="bar-row">
+    <a class="brand" href="#top"><img src="https://wow.zamimg.com/images/wow/icons/medium/classicon_druid.jpg" alt="" width="28" height="28"><span>Forever Druid</span></a>
+    <nav class="jump" aria-label="Sections">
+      <a href="#pick">1 · Build</a>
+      <a href="#talents">2 · Talents</a>
+      <a href="#play">3 · Play</a>
+      <a href="#prep">4 · Prepare</a>
+      <a href="#gear">5 · Gear</a>
+      <a href="#extras">Extras</a>
+    </nav>
+    <div class="toggle" role="group" aria-label="Content" id="mode"></div>
+  </div>
+</header>
+
+<main id="top" class="page">
+  <section class="hero">
+    <p class="kicker">WoW Forever · Level 60 · before the raids open</p>
+    <h1>Play Druid in five steps</h1>
+    <p class="lede" id="lede"></p>
+  </section>
+
+  <p class="notice" id="notice" hidden></p>
+
+  <section id="pick" class="block">
+    <header class="block-head">
+      <div><span class="step">Step 1</span><h2>Pick a build</h2><p class="hint" id="pickhint"></p></div>
+      <div class="toggle" role="group" aria-label="Fight length" id="lengths"></div>
+    </header>
+    <div class="cards" id="builds"></div>
+    <article class="panel" id="picked"></article>
+  </section>
+
+  <section id="talents" class="block">
+    <header class="block-head">
+      <div><span class="step">Step 2</span><h2>Copy the talents</h2><p class="hint">Click a talent to read it and see what it is worth in this build.</p></div>
+      <div class="actions" id="talentactions"></div>
+    </header>
+    <div class="trees" id="trees"></div>
+    <article class="panel" id="talentinfo"></article>
+  </section>
+
+  <section id="play" class="block">
+    <header class="block-head"><div><span class="step">Step 3</span><h2>How to play it</h2><p class="hint">Top to bottom: do the first line that applies.</p></div></header>
+    <ol class="loop" id="loop"></ol>
+    <div class="two">
+      <article class="panel"><h3 id="openertitle">Opener</h3><ol class="plain" id="opener"></ol></article>
+      <article class="panel"><h3>Good to know</h3><ul class="plain" id="tips"></ul></article>
+    </div>
+  </section>
+
+  <section id="prep" class="block">
+    <header class="block-head"><div><span class="step">Step 4</span><h2 id="preptitle">Before the pull</h2><p class="hint" id="prephint"></p></div></header>
+    <div id="prepbody"></div>
+  </section>
+
+  <section id="gear" class="block">
+    <header class="block-head"><div><span class="step">Step 5</span><h2>What to look for on gear</h2><p class="hint" id="gearhint"></p></div></header>
+    <div id="gearbody"></div>
+  </section>
+
+  <section id="extras" class="block">
+    <header class="block-head"><div><span class="step">Extras</span><h2>Macros, addons and words</h2></div></header>
+    <div class="macros" id="macros"></div>
+    <p class="small" id="macrosource"></p>
+    <div class="cards three" id="addons"></div>
+    <dl class="gloss" id="gloss"></dl>
+  </section>
+
+  <footer class="foot" id="foot"></footer>
+</main>
+<div id="toast" role="status" hidden></div>
+
+<script src="data/talents.js"></script>
+<script src="data/sims.js"></script>
+<script src="data/setups.js"></script>
+<script src="data/guide.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

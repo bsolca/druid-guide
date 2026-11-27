@@ -1,0 +1,82 @@
+{
+ "item:10646": {
+  "icon": "spell_fire_selfdestruct",
+  "name": "Goblin Sapper Charge"
+ },
+ "item:12662": {
+  "icon": "inv_misc_rune_04",
+  "name": "Demonic Rune"
+ },
+ "item:260814": {
+  "icon": "inv_misc_bomb_06",
+  "name": "SAF-T Clever Dynamite"
+ },
+ "other:OtherActionAttack": {
+  "icon": null,
+  "name": "Attack"
+ },
+ "spell:10301": {
+  "icon": "spell_holy_auraoflight",
+  "name": "Retribution Aura"
+ },
+ "spell:10610": {
+  "icon": "spell_nature_windfury",
+  "name": "Windfury Totem"
+ },
+ "spell:1235827": {
+  "icon": "ability_druid_lacerate",
+  "name": "Lacerate"
+ },
+ "spell:1238070": {
+  "icon": "ability_racial_cannibalize",
+  "name": "Primal Bite"
+ },
+ "spell:22829": {
+  "icon": "ability_druid_ferociousbite",
+  "name": "Ferocious Bite"
+ },
+ "spell:24977": {
+  "icon": "spell_nature_insectswarm",
+  "name": "Insect Swarm"
+ },
+ "spell:414647": {
+  "icon": "ability_druid_lacerate",
+  "name": "Lacerate"
+ },
+ "spell:9830": {
+  "icon": "spell_shadow_vampiricaura",
+  "name": "Shred"
+ },
+ "spell:9835": {
+  "icon": "spell_nature_starfall",
+  "name": "Moonfire"
+ },
+ "spell:9850": {
+  "icon": "ability_druid_rake",
+  "name": "Claw"
+ },
+ "spell:9876": {
+  "icon": "spell_arcane_starfire",
+  "name": "Starfire"
+ },
+ "spell:9881": {
+  "icon": "ability_druid_maul",
+  "name": "Maul"
+ },
+ "spell:9896": {
+  "icon": "ability_ghoulfrenzy",
+  "name": "Rip"
+ },
+ "spell:9904": {
+  "icon": "ability_druid_disembowel",
+  "name": "Rake"
+ },
+ "spell:9910": {
+  "icon": "spell_nature_thorns",
+  "name": "Thorns"
+ },
+ "spell:9912": {
+  "icon": "spell_nature_abolishmagic",
+  "name": "Wrath"
+ }
+}

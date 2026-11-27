@@ -1,0 +1,362 @@
+{
+ "10256": {
+  "icon": "inv_bracer_13",
+  "name": "Adventurer's Bracers",
+  "quality": 2
+ },
+ "10646": {
+  "icon": "spell_fire_selfdestruct",
+  "name": "Goblin Sapper Charge",
+  "quality": 1
+ },
+ "12460": {
+  "icon": "inv_misc_monsterscales_07",
+  "name": "Juju Might",
+  "quality": 1
+ },
+ "12553": {
+  "icon": "inv_boots_02",
+  "name": "Swiftwalker Boots",
+  "quality": 3
+ },
+ "12643": {
+  "icon": "inv_stone_weightstone_05",
+  "name": "Dense Weightstone",
+  "quality": 1
+ },
+ "12662": {
+  "icon": "inv_misc_rune_04",
+  "name": "Demonic Rune",
+  "quality": 2
+ },
+ "13442": {
+  "icon": "inv_potion_41",
+  "name": "Mighty Rage Potion",
+  "quality": 1
+ },
+ "13444": {
+  "icon": "inv_potion_76",
+  "name": "Major Mana Potion",
+  "quality": 1
+ },
+ "13454": {
+  "icon": "inv_potion_109",
+  "name": "Greater Arcane Elixir",
+  "quality": 1
+ },
+ "13455": {
+  "icon": "inv_potion_69",
+  "name": "Greater Stoneshield Potion",
+  "quality": 1
+ },
+ "13512": {
+  "icon": "inv_potion_41",
+  "name": "Flask of Supreme Power",
+  "quality": 1
+ },
+ "13933": {
+  "icon": "inv_drink_17",
+  "name": "Lobster Stew",
+  "quality": 1
+ },
+ "13937": {
+  "icon": "inv_jewelry_talisman_12",
+  "name": "Headmaster's Charge",
+  "quality": 4
+ },
+ "13968": {
+  "icon": "inv_jewelry_talisman_08",
+  "name": "Eye of the Beast",
+  "quality": 3
+ },
+ "15065": {
+  "icon": "inv_pants_wolf",
+  "name": "Warbear Woolies",
+  "quality": 3
+ },
+ "16459": {
+  "icon": "inv_boots_08",
+  "name": "Marshal's Dragonhide Boots",
+  "quality": 4
+ },
+ "17904": {
+  "icon": "inv_jewelry_stormpiketrinket_05",
+  "name": "Stormpike Insignia Rank 6",
+  "quality": 4
+ },
+ "18262": {
+  "icon": "inv_stone_02",
+  "name": "Elemental Sharpening Stone",
+  "quality": 2
+ },
+ "18511": {
+  "icon": "inv_misc_cape_20",
+  "name": "Shifting Cloak",
+  "quality": 4
+ },
+ "18879": {
+  "icon": "inv_jewelry_ring_14",
+  "name": "Heavy Dark Iron Ring",
+  "quality": 4
+ },
+ "19049": {
+  "icon": "inv_gauntlets_26",
+  "name": "Timbermaw Brawlers",
+  "quality": 3
+ },
+ "19120": {
+  "icon": "inv_misc_rune_07",
+  "name": "Rune of the Guard Captain",
+  "quality": 2
+ },
+ "19323": {
+  "icon": "inv_hammer_13",
+  "name": "The Unstoppable Force",
+  "quality": 4
+ },
+ "19325": {
+  "icon": "inv_jewelry_ring_35",
+  "name": "Don Julio's Band",
+  "quality": 4
+ },
+ "19426": {
+  "icon": "inv_jewelry_necklace_16",
+  "name": "Orb of the Darkmoon",
+  "quality": 4
+ },
+ "19491": {
+  "icon": "inv_jewelry_necklace_14",
+  "name": "Amulet of the Darkmoon",
+  "quality": 4
+ },
+ "19587": {
+  "icon": "inv_bracer_12",
+  "name": "Forest Stalker's Bracers",
+  "quality": 4
+ },
+ "20750": {
+  "icon": "inv_potion_104",
+  "name": "Wizard Oil",
+  "quality": 1
+ },
+ "21023": {
+  "icon": "inv_misc_food_65",
+  "name": "Dirge's Kickin' Chimaerok Chops",
+  "quality": 1
+ },
+ "21202": {
+  "icon": "inv_jewelry_ring_40",
+  "name": "Signet Ring of the Bronze Dragonflight",
+  "quality": 4
+ },
+ "22339": {
+  "icon": "inv_jewelry_ring_35",
+  "name": "Rune Band of Wizardry",
+  "quality": 3
+ },
+ "226772": {
+  "icon": "inv_belt_15",
+  "name": "Feralheart Sash",
+  "quality": 3
+ },
+ "226773": {
+  "icon": "inv_helmet_27",
+  "name": "Feralheart Cowl",
+  "quality": 4
+ },
+ "226774": {
+  "icon": "inv_boots_08",
+  "name": "Feralheart Galoshes",
+  "quality": 4
+ },
+ "226776": {
+  "icon": "inv_chest_plate06",
+  "name": "Feralheart Vest",
+  "quality": 4
+ },
+ "226777": {
+  "icon": "inv_gauntlets_17",
+  "name": "Feralheart Hands",
+  "quality": 4
+ },
+ "226778": {
+  "icon": "inv_shoulder_01",
+  "name": "Feralheart Spaulders",
+  "quality": 3
+ },
+ "22749": {
+  "icon": "inv_pants_leather_12",
+  "name": "Sentinel's Leather Pants",
+  "quality": 4
+ },
+ "250072": {
+  "icon": "inv_misc_food_49",
+  "name": "Swiftstrike Steak",
+  "quality": 1
+ },
+ "250328": {
+  "icon": "inv_potion_166",
+  "name": "Elixir of Cunning",
+  "quality": 1
+ },
+ "250329": {
+  "icon": "trade_alchemy_dpotion_a25",
+  "name": "Elixir of the Phalanx",
+  "quality": 1
+ },
+ "250337": {
+  "icon": "inv_potion_164",
+  "name": "Elixir of the Owl",
+  "quality": 1
+ },
+ "250341": {
+  "icon": "inv_potion_168",
+  "name": "Greater Mageblood Elixir",
+  "quality": 1
+ },
+ "250343": {
+  "icon": "inv_potion_97",
+  "name": "Elixir of Nature Power",
+  "quality": 1
+ },
+ "250351": {
+  "icon": "inv_potion_160",
+  "name": "Elixir of the Grizzly",
+  "quality": 1
+ },
+ "250937": {
+  "icon": "inv_potione_4",
+  "name": "Major Spellblasting Potion",
+  "quality": 1
+ },
+ "252483": {
+  "icon": "inv_chest_leather_08",
+  "name": "Dawn Armor",
+  "quality": 4
+ },
+ "252484": {
+  "icon": "inv_chest_fur",
+  "name": "Timbermaw Tunic",
+  "quality": 4
+ },
+ "252485": {
+  "icon": "inv_helmet_31",
+  "name": "Warbear Helm",
+  "quality": 4
+ },
+ "252486": {
+  "icon": "inv_pants_leather_26",
+  "name": "Ironfeather Leggings",
+  "quality": 4
+ },
+ "260814": {
+  "icon": "inv_misc_bomb_06",
+  "name": "SAF-T Clever Dynamite",
+  "quality": 1
+ },
+ "260817": {
+  "icon": "inv_misc_bomb_05",
+  "name": "EZ-Thro Dark Bomb",
+  "quality": 1
+ },
+ "270275": {
+  "icon": "inv_misc_coin_09",
+  "name": "Cleansed Vilebranch Medallion",
+  "quality": 2
+ },
+ "271955": {
+  "icon": "inv_shoulder_06",
+  "name": "Theramore Pauldrons",
+  "quality": 4
+ },
+ "272396": {
+  "icon": "inv_belt_16",
+  "name": "Shifter's Belt",
+  "quality": 4
+ },
+ "272406": {
+  "icon": "inv_jewelry_ring_24",
+  "name": "Channeler's Ring",
+  "quality": 3
+ },
+ "272411": {
+  "icon": "inv_misc_cape_05",
+  "name": "Arcanoweave Cloak",
+  "quality": 3
+ },
+ "272427": {
+  "icon": "inv_relics_idolofferocity",
+  "name": "Howling Idol",
+  "quality": 3
+ },
+ "272430": {
+  "icon": "trade_archaeology_insect-in-amber",
+  "name": "Swarming Idol",
+  "quality": 3
+ },
+ "272438": {
+  "icon": "inv_misc_blizzcon09_graphicscard",
+  "name": "Weakness Analyzer",
+  "quality": 3
+ },
+ "272754": {
+  "icon": "inv_bracer_02",
+  "name": "Premier Knight-Captain's Beasthide Bracers",
+  "quality": 4
+ },
+ "272848": {
+  "icon": "inv_hammer_03",
+  "name": "Premier Grand Marshal's Battle Hammer",
+  "quality": 4
+ },
+ "274274": {
+  "icon": "inv_potionc_1",
+  "name": "Flask of Natural Aggression",
+  "quality": 2
+ },
+ "274275": {
+  "icon": "inv_potionc_3",
+  "name": "Flask of Natural Precision",
+  "quality": 2
+ },
+ "275981": {
+  "icon": "inv_jewelry_ring_25",
+  "name": "Warden's Signet of Ferocity",
+  "quality": 4
+ },
+ "8345": {
+  "icon": "inv_helmet_04",
+  "name": "Wolfshead Helm",
+  "quality": 3
+ },
+ "8411": {
+  "icon": "inv_drink_12",
+  "name": "Lung Juice Cocktail",
+  "quality": 1
+ },
+ "8412": {
+  "icon": "inv_misc_dust_02",
+  "name": "Ground Scorpok Assay",
+  "quality": 1
+ },
+ "8423": {
+  "icon": "inv_potion_32",
+  "name": "Cerebral Cortex Compound",
+  "quality": 1
+ },
+ "9088": {
+  "icon": "inv_potion_28",
+  "name": "Gift of Arthas",
+  "quality": 1
+ },
+ "9421": {
+  "icon": "inv_stone_04",
+  "name": "Major Healthstone",
+  "quality": 1
+ },
+ "9449": {
+  "icon": "inv_mace_14",
+  "name": "Manual Crowd Pummeler",
+  "quality": 3
+ }
+}

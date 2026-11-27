@@ -1,0 +1,77 @@
+siml 1
+spec feral_bear_druid
+talents "050022-5023030212310112501-055"
+use "bear.apl.siml"
+
+settings:
+  race tauren
+  profession1 engineering
+  profession2 enchanting
+  reaction_time 250ms
+  distance_from_target 25
+  assume_bleed_active
+  in_front_of_target
+  tanks player1
+  healing_model(hps=2200, cadence_seconds=0.4, cadence_variation=1.2, absorb_frac=0.02, burst_window=6, inspiration_uptime=0.25)
+
+gear:
+  head       warbear_helm
+  neck       amulet_of_the_darkmoon
+  shoulder   theramore_pauldrons
+  back       shifting_cloak
+  chest      dawn_armor
+  wrist      premier_knight_captains_beasthide_bracers
+  hands      timbermaw_brawlers
+  waist      shifters_belt
+  legs       sentinels_leather_pants
+  feet       marshals_dragonhide_boots
+  finger1    signet_ring_of_the_bronze_dragonflight_21202
+  finger2    heavy_dark_iron_ring
+  trinket1   stormpike_insignia_rank_6
+  trinket2   rune_of_the_guard_captain
+  main_hand  premier_grand_marshals_battle_hammer
+
+item_swap:
+  main_hand  manual_crowd_pummeler
+
+consumables:
+  flask flask_of_natural_precision
+  food dirges_kickin_chimaerok_chops
+  conjured major_healthstone
+  mh_imbue elemental_sharpening_stone
+  swap_mh_imbue dense_weightstone
+  extra goblin_sapper_charge, juju_might, lung_juice_cocktail
+  elixir gift_of_arthas, elixir_of_the_grizzly, elixir_of_cunning, elixir_of_the_phalanx
+  defensive_pot greater_stoneshield_potion
+  offensive_pot mighty_rage_potion
+
+buffs:
+  greater_blessing_of_kings, thorns
+  greater_blessing_of_might 1
+
+party_buffs: devotion_aura, mana_spring_totem, retribution_aura
+
+raid_buffs:
+  arcane_intellect, prayer_of_spirit, mark_of_the_wild, power_word_fortitude, shadow_protection, windfury_totem
+  strength_of_earth_totem 1
+  grace_of_air_totem 1
+  battle_shout 1
+
+debuffs: judgement_of_light, judgement_of_wisdom, expose_armor, sunder_armor, vindication
+
+sim: iterations 25000
+
+encounter:
+  duration 180
+  duration_variation 5
+  execute_proportion_20 0.2
+  execute_proportion_35 0.35
+  targets(id=31146,
+      name="Raid Target",
+      level=63,
+      stats(attack_power=320, block_value=54, armor=3731, health=1428900),
+      min_base_damage=6000,
+      damage_spread=0.5,
+      swing_speed=2,
+      parry_haste,
+      can_crush)
