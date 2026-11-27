@@ -99,7 +99,7 @@
       const n = data.byLength[state.length];
       const figures = isTank(b)
         ? [[whole(n.tps), 'threat per second'], [whole(n.dtps), 'damage taken per second'], [`${n.death}%`, 'chance to die'], [whole(n.dps), 'DPS']]
-        : [[whole(n.dps), 'DPS'], ...SIMS.meta.fightLengths.filter(s => String(s) !== state.length).map(s => [whole(data.byLength[s].dps), `at ${s} s`])];
+        : SIMS.meta.fightLengths.map(s => [whole(data.byLength[s].dps), `DPS at ${s} s${String(s) === state.length ? ' (selected)' : ''}`]);
       body += `<div class="figures">${figures.map(([value, label]) => `<div class="figure"><b>${value}</b><span>${label}</span></div>`).join('')}</div>`;
       const sources = data.sources.filter(s => s.share >= 1).map(s => ({ label: SOURCE_NAMES[s.name] || s.name, icon: s.icon, value: s.dps }));
       body += `<h3 style="margin-top:18px">Where the damage comes from</h3>${barLines(sources, v => whole(v))}`;
