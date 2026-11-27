@@ -51,7 +51,7 @@
     el('notice').textContent = GUIDE.pvpNotice;
     el('lengths').hidden = !pve;
     el('pickhint').textContent = pve
-      ? 'New to Druid? Bear and Moonkin are the easiest to play. Cat does the most damage.'
+      ? 'Cat does the most damage, Bear tanks, Moonkin casts from range. Hybrid is one talent build for both Feral forms.'
       : 'Feral has the most PvP material so far. Balance has none that anyone has tested.';
   }
 
@@ -70,7 +70,7 @@
       return `<button type="button" class="card" data-build="${b.id}" aria-pressed="${b.id === build().id}" style="--accent:${spec.color}">
         <span class="card-top"><img src="${icon(spec.icon)}" width="36" height="36" alt=""><span><span class="card-name">${esc(b.name)}</span><br><span class="small">${esc(b.sub)}</span></span></span>
         ${figure ? `<span class="card-big">${figure.value}<small>${figure.unit}</small></span>` : ''}
-        <span class="tag ${b.difficulty ? '' : 'plain'}">${esc(b.difficulty || spec.name)}</span>
+        <span class="tag plain">${esc(spec.name)}</span>
       </button>`;
     }).join('');
     el('builds').onclick = event => {
@@ -101,8 +101,8 @@
         ? [[whole(n.tps), 'threat per second'], [whole(n.dtps), 'damage taken per second'], [`${n.death}%`, 'chance to die'], [whole(n.dps), 'DPS']]
         : SIMS.meta.fightLengths.map(s => [whole(data.byLength[s].dps), `DPS at ${s} s${String(s) === state.length ? ' (selected)' : ''}`]);
       body += `<div class="figures">${figures.map(([value, label]) => `<div class="figure"><b>${value}</b><span>${label}</span></div>`).join('')}</div>`;
-      const sources = data.sources.filter(s => s.share >= 1).map(s => ({ label: SOURCE_NAMES[s.name] || s.name, icon: s.icon, value: s.dps }));
-      body += `<h3 style="margin-top:18px">Where the damage comes from</h3>${barLines(sources, v => whole(v))}`;
+      const sources = data.sourcesByLength[state.length].filter(s => s.share >= 1).map(s => ({ label: SOURCE_NAMES[s.name] || s.name, icon: s.icon, value: s.dps }));
+      body += `<h3 style="margin-top:18px">Where the damage comes from, at ${state.length} s</h3>${barLines(sources, v => whole(v))}`;
       body += `<p class="small">${whole(SIMS.meta.iterations)} simulated fights against one level 63 boss, full raid buffs and consumables, WoWSims Forever ${esc(SIMS.meta.simVersion)} on ${esc(SIMS.meta.simDate)}.</p>`;
     }
     if (b.source) body += `<p class="small">Source: <a href="${esc(b.source[1])}" target="_blank" rel="noopener">${esc(b.source[0])}</a></p>`;
@@ -171,13 +171,18 @@
     const text = stripTags(talent.ranks[Math.max(taken, 1) - 1]);
     const value = talentValue(b, talent.name);
     let worth = '';
-    if (value) {
+    const noise = sim(b) && sim(b).noise;
+    const measurable = value && Object.keys(noise).some(metric => Math.abs(value.all[metric]) >= noise[metric]);
+    if (value && !measurable) {
+      worth = '<p><b>Worth in this build:</b> nothing the simulator can measure. Any difference is smaller than its run-to-run noise.</p>';
+    } else if (value) {
       const tank = isTank(b);
       const parts = tank
-        ? [`${signed(value.all.tps)} threat per second`, `${signed(-value.all.dtps)} damage taken per second`]
+        ? [`${signed(value.all.tps)} threat per second`, `${signed(value.all.dtps)} damage taken per second`, `${signed(value.all.death)} points of chance to die`]
         : [`${signed(value.all.dps)} DPS`];
       worth = `<p><b>Worth in this build:</b> ${parts.join(', ')} for ${value.points > 1 ? `all ${value.points} points` : 'its one point'}`;
-      if (value.last) worth += `; the last point alone is ${signed(tank ? value.last.tps : value.last.dps)} ${tank ? 'TPS' : 'DPS'}`;
+      const lastPoint = value.last && (tank ? value.last.tps : value.last.dps);
+      if (value.last && Math.abs(lastPoint) >= noise[tank ? 'tps' : 'dps']) worth += `; the last point alone is ${signed(lastPoint)} ${tank ? 'TPS' : 'DPS'}`;
       worth += '.</p>';
     } else if (taken && sim(b)) {
       worth = '<p class="small">No measured value for this talent.</p>';

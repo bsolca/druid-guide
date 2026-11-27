@@ -8,6 +8,7 @@ what each talent is worth (the build minus that talent, all points and last poin
 """
 import argparse
 import json
+import math
 import re
 import subprocess
 import sys
@@ -95,6 +96,18 @@ def headline(player, tank):
         numbers['dtps'] = round(player['dtps']['avg'], 1)
         numbers['death'] = round(player['chanceOfDeath'] * 100, 2)
     return numbers
+
+
+def noise_floor(player, tank):
+    def three_sigma_of_a_difference(metric):
+        runs = metric['aggregatorData']['n']
+        return round(3 * math.sqrt(2) * metric['stdev'] / math.sqrt(runs), 2)
+
+    floor = {'dps': three_sigma_of_a_difference(player['dps'])}
+    if tank:
+        floor['tps'] = three_sigma_of_a_difference(player['threat'])
+        floor['dtps'] = three_sigma_of_a_difference(player['dtps'])
+    return floor
 
 
 def difference(base, other):
@@ -186,11 +199,13 @@ def sim_build(simulator, build, names, talent_names):
 
     base_player = simulator.run(setup_text)
     base = headline(base_player, tank)
+    by_length = {str(s): simulator.run(with_fight_length(setup_text, s)) for s in FIGHT_LENGTHS}
     out = {
         'talents': talents,
         'base': base,
-        'byLength': {str(s): headline(simulator.run(with_fight_length(setup_text, s)), tank) for s in FIGHT_LENGTHS},
-        'sources': damage_split(base_player, names),
+        'noise': noise_floor(base_player, tank),
+        'byLength': {length: headline(player, tank) for length, player in by_length.items()},
+        'sourcesByLength': {length: damage_split(player, names) for length, player in by_length.items()},
         'talentValues': talent_values(simulator, setup_text, talents, base, tank, talent_names),
         'withoutConsumables': difference(base, headline(simulator.run(without_sections(setup_text, ['consumables'])), tank)),
         'withoutBuffs': difference(base, headline(simulator.run(without_sections(setup_text, BUFF_SECTIONS)), tank)),

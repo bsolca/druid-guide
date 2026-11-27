@@ -15,21 +15,22 @@ settings:
   healing_model(hps=2200, cadence_seconds=0.4, cadence_variation=1.2, absorb_frac=0.02, burst_window=6, inspiration_uptime=0.25)
 
 gear:
-  head       warbear_helm
-  neck       amulet_of_the_darkmoon
+  head       wolfshead_helm + lesser_arcane_amalgamation_1508
+  neck       amulet_of_the_darkmoon + necklace_agility
   shoulder   theramore_pauldrons
-  back       shifting_cloak
-  chest      dawn_armor
-  wrist      premier_knight_captains_beasthide_bracers
-  hands      timbermaw_brawlers
+  back       shifting_cloak + cloak_agility
+  chest      timbermaw_tunic + chest_greater_stats
+  wrist      forest_stalkers_bracers + bracer_agility_7656
+  hands      timbermaw_brawlers + gloves_superior_agility
   waist      shifters_belt
-  legs       sentinels_leather_pants
-  feet       marshals_dragonhide_boots
-  finger1    signet_ring_of_the_bronze_dragonflight_21202
-  finger2    heavy_dark_iron_ring
-  trinket1   stormpike_insignia_rank_6
-  trinket2   rune_of_the_guard_captain
-  main_hand  premier_grand_marshals_battle_hammer
+  legs       warbear_woolies + lesser_arcane_amalgamation_1508
+  feet       swiftwalker_boots + boots_greater_agility
+  finger1    don_julios_band
+  finger2    ferocious_watchers_signet_ilvl65
+  trinket1   rune_of_the_guard_captain
+  trinket2   cleansed_vilebranch_medallion
+  main_hand  the_unstoppable_force + enchant_2h_weapon_superior_impact
+  ranged     howling_idol
 
 item_swap:
   main_hand  manual_crowd_pummeler
