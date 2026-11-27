@@ -29,3 +29,4 @@ Not measured:
 
 The setups in `tools/setups/` mirror the simulator's defaults (`ui/specs/druid/*` in wowsims/forever, MIT licence).
 Cat and Bear have no `defaults.siml` upstream, so theirs are assembled from `presets.ts` and `spec.ts`.
+The Bear wears the pre-raid Feral set too: upstream's default Bear set is rank 14 PvP gear.

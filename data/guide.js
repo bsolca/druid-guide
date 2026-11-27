@@ -8,7 +8,7 @@ window.GUIDE = {
 
   pve: [
     {
-      id: 'cat', spec: 'feral', sim: 'cat', setup: 'cat', name: 'Cat', sub: 'Shred from behind', difficulty: 'Medium',
+      id: 'cat', spec: 'feral', sim: 'cat', setup: 'cat', name: 'Cat', sub: 'Shred from behind',
       when: 'The top druid damage in the sim. You need to stand behind the boss for Shred and keep two bleeds rolling.',
       loop: [
         ['Faerie Fire', 'Keep it on the boss before anything else. It is a raid debuff, not personal damage.'],
@@ -35,7 +35,7 @@ window.GUIDE = {
       caps: ['8% hit', '6.5% expertise'],
     },
     {
-      id: 'cat-hybrid', spec: 'feral', sim: 'cat-hybrid', setup: 'cat', name: 'Hybrid, in Cat', sub: 'one spec, both forms', difficulty: 'Medium',
+      id: 'cat-hybrid', spec: 'feral', sim: 'cat-hybrid', setup: 'cat', name: 'Hybrid, in Cat', sub: 'one spec, both forms',
       when: 'One talent build that also tanks. You give up Shredding Attacks, so Claw is your builder, and you lose about 60 DPS to the Cat build.',
       loop: [
         ['Faerie Fire', 'Keep it on the boss.'],
@@ -47,15 +47,15 @@ window.GUIDE = {
       ],
       opener: ['Prowl and Dash in.', 'Ravage from stealth.', 'Activate Manual Crowd Pummeler in melee.', 'Rake, Claw to 4 points, Rip.'],
       tips: [
-        'Same gear as the Cat build in this sim. Swap to tank pieces when you are the one being hit.',
+        'Every Feral build here wears the same pre-raid set, so the four are directly comparable.',
         'Lacerate and Primal Bite are worth nothing in Cat Form: they are in the build for your Bear.',
       ],
       weights: { reference: 'Strength', source: 'hybrid' },
       caps: ['8% hit', '6.5% expertise'],
     },
     {
-      id: 'bear', spec: 'bear', sim: 'bear', setup: 'bear', name: 'Bear', sub: 'main tank', difficulty: 'Easy',
-      when: 'The tank build. Lacerate is the whole threat engine: it alone is worth about 1,170 threat per second.',
+      id: 'bear', spec: 'bear', sim: 'bear', setup: 'bear', name: 'Bear', sub: 'main tank',
+      when: 'The tank build. Lacerate is the whole threat engine: it alone is worth about 1,230 threat per second.',
       loop: [
         ['Faerie Fire', 'Apply it if nobody else does. Demoralizing Roar the same way.'],
         ['Primal Bite', 'On cooldown, before any filler.'],
@@ -72,15 +72,15 @@ window.GUIDE = {
       ],
       tips: [
         'Barkskin and Frenzied Regeneration are your buttons when health drops. Major Healthstone at the same moment.',
-        'Thick Hide and Feral Swiftness each remove about 53 damage taken per second. Do not drop them for threat.',
-        'Without consumables the chance to die in a 3 minute fight jumps from about 1% to nearly 50% in this sim.',
-        'The boss here has a 6,000 base hit before armor, and the healing model gives you 2,200 healing per second.',
+        'Thick Hide and Feral Swiftness each remove about 60 damage taken per second. Heart of the Wild cuts the chance to die by 18 points. Do not drop them for threat.',
+        'In this pre-raid damage set you die in 16% of 3 minute fights, and in almost all of them without consumables. Stamina gear is not optional for a raid boss.',
+        'The boss here has a 6,000 base hit before armor, and the healing model gives you 2,200 healing per second. The gear is the pre-raid Feral set of the simulator, not a tank set.',
       ],
       weights: { reference: 'Stamina', source: 'bear' },
       caps: ['8% hit', '6.5% expertise', '5.6% reduced crit taken'],
     },
     {
-      id: 'bear-hybrid', spec: 'bear', sim: 'bear-hybrid', setup: 'bear', name: 'Hybrid, in Bear', sub: 'one spec, both forms', difficulty: 'Easy',
+      id: 'bear-hybrid', spec: 'bear', sim: 'bear-hybrid', setup: 'bear', name: 'Hybrid, in Bear', sub: 'one spec, both forms',
       when: 'The same hybrid talents, tanking. About 50 threat per second behind the Bear build, same damage taken.',
       loop: [
         ['Faerie Fire', 'Apply it if nobody else does.'],
@@ -94,7 +94,7 @@ window.GUIDE = {
       caps: ['8% hit', '6.5% expertise', '5.6% reduced crit taken'],
     },
     {
-      id: 'balance', spec: 'balance', sim: 'balance', setup: 'balance', name: 'Moonkin', sub: 'Eclipse caster', difficulty: 'Easy',
+      id: 'balance', spec: 'balance', sim: 'balance', setup: 'balance', name: 'Moonkin', sub: 'Eclipse caster',
       when: 'Ranged damage and a crit aura for the raid. Two dots, then Wrath feeds Starfire through Eclipse.',
       loop: [
         ['Moonfire', 'Keep it on the boss. Stop refreshing in the last 8 seconds.'],
@@ -119,7 +119,7 @@ window.GUIDE = {
       caps: ['Hit first: it is your best stat per point'],
     },
     {
-      id: 'resto', spec: 'resto', sim: null, setup: null, name: 'Restoration', sub: 'healer, not simulated', difficulty: 'Medium',
+      id: 'resto', spec: 'resto', sim: null, setup: null, name: 'Restoration', sub: 'healer, not simulated',
       talents: '35002001--0553025153113051', unsimmed: true,
       when: 'The simulator does not model healing, so nothing on this card is measured. The talents below are a starting point built from the talent text, not a tested best build.',
       loop: [
